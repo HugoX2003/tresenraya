@@ -1,0 +1,40 @@
+<div class="flex justify-center items-center min-h-screen bg-gray-900 text-white">
+  <!-- Contenedor del tablero y controles -->
+  <div class="flex space-x-8">
+    <!-- Tablero del juego con padding adicional y tamaño ajustado -->
+    <div class="grid grid-cols-3 gap-4 w-[480px] h-[480px] bg-gray-800 rounded-lg shadow-lg p-4">
+      <div
+        *ngFor="let cell of board; let i = index"
+        class="w-[140px] h-[140px] bg-gray-600 rounded-lg flex items-center justify-center text-5xl font-bold cursor-pointer hover:bg-gray-500 transition-colors"
+        (click)="handleCellClick(i)"
+      >
+        {{ cell }}
+      </div>
+    </div>
+
+    <!-- Controles y contador de victorias -->
+    <div class="flex flex-col justify-center items-center space-y-6">
+      <!-- Botones -->
+      <div class="flex flex-col space-y-2">
+        <button
+          (click)="resetGame()"
+          class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition-colors"
+        >
+          Reiniciar Juego
+        </button>
+        <button
+          (click)="resetScore()"
+          class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg shadow-md transition-colors"
+        >
+          Reiniciar Puntaje
+        </button>
+      </div>
+
+      <!-- Contador de victorias -->
+      <div class="text-center">
+        <p class="text-lg">Victorias de <span class="font-bold text-blue-400">X</span>: {{ score.x }}</p>
+        <p class="text-lg">Victorias de <span class="font-bold text-red-400">O</span>: {{ score.o }}</p>
+      </div>
+    </div>
+  </div>
+</div>
